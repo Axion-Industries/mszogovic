@@ -30,6 +30,37 @@ export default function SettingsPage() {
     setNotifications(checked);
   };
 
+  const handleFontSizeChange = (value: string) => {
+    setFontSize(value);
+    // Apply font size to document root
+    const root = document.documentElement;
+    root.classList.remove('text-small', 'text-medium', 'text-large');
+    root.classList.add(`text-${value}`);
+  };
+
+  const handleThemeChange = (value: string) => {
+    setTheme(value);
+    // Apply theme colors
+    const root = document.documentElement;
+    root.classList.remove('theme-blue', 'theme-green', 'theme-purple');
+    root.classList.add(`theme-${value}`);
+  };
+
+  const handleAngleModeChange = (value: string) => {
+    // Store angle mode preference (you can extend this to persist in localStorage)
+    localStorage.setItem('calculatorAngleMode', value);
+  };
+
+  const handleDecimalPlacesChange = (value: string) => {
+    // Store decimal places preference
+    localStorage.setItem('calculatorDecimalPlaces', value);
+  };
+
+  const handleClassUpdatesToggle = (checked: boolean) => {
+    // Handle class updates notification setting
+    localStorage.setItem('classUpdatesEnabled', checked.toString());
+  };
+
   return (
     <div className="min-h-screen bg-edu-bg dark:bg-gray-900 animate-in fade-in duration-500">
       {/* Header */}
@@ -97,7 +128,7 @@ export default function SettingsPage() {
                   <p className="font-medium text-edu-text dark:text-white">Font Size</p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Adjust text size for better readability</p>
                 </div>
-                <Select value={fontSize} onValueChange={setFontSize}>
+                <Select value={fontSize} onValueChange={handleFontSizeChange}>
                   <SelectTrigger className="w-32">
                     <SelectValue />
                   </SelectTrigger>
@@ -170,7 +201,7 @@ export default function SettingsPage() {
                   <p className="font-medium text-edu-text dark:text-white">Class Updates</p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Receive notifications for new announcements</p>
                 </div>
-                <Switch defaultChecked />
+                <Switch defaultChecked onCheckedChange={handleClassUpdatesToggle} />
               </div>
             </CardContent>
           </Card>
@@ -191,7 +222,7 @@ export default function SettingsPage() {
                   <p className="font-medium text-edu-text dark:text-white">Angle Mode</p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Default mode for trigonometric functions</p>
                 </div>
-                <Select defaultValue="degrees">
+                <Select defaultValue="degrees" onValueChange={handleAngleModeChange}>
                   <SelectTrigger className="w-32">
                     <SelectValue />
                   </SelectTrigger>
@@ -208,7 +239,7 @@ export default function SettingsPage() {
                   <p className="font-medium text-edu-text dark:text-white">Decimal Places</p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Number of decimal places to display</p>
                 </div>
-                <Select defaultValue="auto">
+                <Select defaultValue="auto" onValueChange={handleDecimalPlacesChange}>
                   <SelectTrigger className="w-32">
                     <SelectValue />
                   </SelectTrigger>
@@ -241,6 +272,17 @@ export default function SettingsPage() {
                     setFontSize("medium");
                     setTheme("blue");
                     document.documentElement.classList.remove('dark');
+                    
+                    // Reset font size and theme classes
+                    const root = document.documentElement;
+                    root.classList.remove('text-small', 'text-medium', 'text-large');
+                    root.classList.remove('theme-blue', 'theme-green', 'theme-purple');
+                    root.classList.add('text-medium', 'theme-blue');
+                    
+                    // Reset localStorage settings
+                    localStorage.setItem('calculatorAngleMode', 'degrees');
+                    localStorage.setItem('calculatorDecimalPlaces', 'auto');
+                    localStorage.setItem('classUpdatesEnabled', 'true');
                   }}
                 >
                   Reset
