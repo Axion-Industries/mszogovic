@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calculator, BookOpen, HelpCircle, Settings, Clock, DoorOpen, Graduation, User } from "lucide-react";
+import { Calculator, BookOpen, HelpCircle, Settings, Clock, DoorOpen, GraduationCap, User } from "lucide-react";
 import { getTimeBasedGreeting, formatDate, formatTime } from "@/lib/utils";
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
               <div className="w-8 h-8 bg-edu-blue rounded-lg flex items-center justify-center">
                 <Calculator className="text-white w-4 h-4" />
               </div>
-              <h1 className="text-xl font-semibold text-edu-text">Ms. Zogovic</h1>
+              <h1 className="text-xl font-semibold text-edu-text">Ms. Zogovic's Math Class</h1>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-600">{formatDate(currentTime)}</span>
@@ -49,7 +49,7 @@ export default function Home() {
               <h2 className="text-3xl sm:text-4xl font-bold text-edu-text mb-2">
                 {greeting}
               </h2>
-              <p className="text-lg text-gray-600 mb-6">Welcome to Ms. Zogovic's classroom</p>
+              <p className="text-lg text-gray-600 mb-6">Welcome to Ms. Zogovic's Math Class</p>
               
               {/* Dynamic time display */}
               <div className="flex items-center justify-center space-x-2 text-edu-blue mb-8">
@@ -67,7 +67,7 @@ export default function Home() {
                 </Link>
                 <Link href="/resources">
                   <Button className="bg-edu-green hover:bg-edu-green/90 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                    <Graduation className="mr-2 w-5 h-5" />
+                    <GraduationCap className="mr-2 w-5 h-5" />
                     View Resources
                   </Button>
                 </Link>

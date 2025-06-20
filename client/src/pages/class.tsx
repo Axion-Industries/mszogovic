@@ -34,7 +34,7 @@ export default function Class() {
               <div className="w-8 h-8 bg-edu-blue rounded-lg flex items-center justify-center">
                 <ListTodo className="text-white w-4 h-4" />
               </div>
-              <h1 className="text-xl font-semibold text-edu-text">Ms. Zogovic</h1>
+              <h1 className="text-xl font-semibold text-edu-text">Ms. Zogovic's Math Class</h1>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-600">{new Date().toLocaleDateString('en-US', {
@@ -194,32 +194,33 @@ export default function Class() {
         </div>
 
         {/* Course Materials Section */}
-        <div className="mt-8">
-          <Card className="bg-edu-card rounded-xl p-6 shadow-sm border border-gray-100">
-            <CardContent className="p-0">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-edu-blue/10 rounded-lg flex items-center justify-center">
-                  <BookOpen className="text-edu-blue w-5 h-5" />
-                </div>
-                <h3 className="text-xl font-semibold text-edu-text">Course Materials</h3>
+        <Card className="bg-edu-card rounded-xl shadow-sm border border-gray-100 mt-8">
+          <div className="p-6 border-b border-gray-100">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-edu-blue/10 rounded-lg flex items-center justify-center">
+                <BookOpen className="text-edu-blue w-5 h-5" />
               </div>
-              <p className="text-gray-600 mb-6">Access textbooks, worksheets, and supplementary resources for all course topics.</p>
-              <Link href="/resources">
-                <Button className="bg-edu-blue hover:bg-edu-blue/90 text-white">
-                  Browse Materials
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
+              <h3 className="text-xl font-semibold text-edu-text">Course Materials</h3>
+            </div>
+          </div>
+          <CardContent className="p-6">
+            <p className="text-gray-600 mb-4">Access comprehensive curriculum guides, textbooks, worksheets, and supplementary learning resources organized by quarter and topic.</p>
+            <Link href="/resources">
+              <Button className="bg-edu-blue hover:bg-edu-blue/90 text-white">
+                <BookOpen className="mr-2 w-4 h-4" />
+                View Resources
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
 
-      {/* Footer */}
-      <footer className="bg-edu-card border-t border-gray-100 py-6 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-600 text-sm">© 2024 Ms. Zogovic's Classroom. All rights reserved.</p>
-        </div>
-      </footer>
+        {/* Footer */}
+        <footer className="mt-16 py-8 border-t border-gray-200">
+          <div className="text-center">
+            <p className="text-gray-600">&copy; 2025 Ms. Zogovic's Math Class. All rights reserved.</p>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }

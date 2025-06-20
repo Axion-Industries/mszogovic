@@ -142,7 +142,8 @@ export class MemStorage implements IStorage {
     const item: NewsItem = {
       ...insertItem,
       id,
-      createdAt: new Date()
+      createdAt: new Date(),
+      priority: insertItem.priority || "normal"
     };
     this.newsItems.set(id, item);
     return item;
@@ -156,7 +157,13 @@ export class MemStorage implements IStorage {
 
   async createAssignment(insertAssignment: InsertAssignment): Promise<Assignment> {
     const id = this.currentAssignmentId++;
-    const assignment: Assignment = { ...insertAssignment, id };
+    const assignment: Assignment = { 
+      ...insertAssignment, 
+      id,
+      status: insertAssignment.status || "active",
+      isCompleted: insertAssignment.isCompleted || false,
+      grade: insertAssignment.grade || null
+    };
     this.assignments.set(id, assignment);
     return assignment;
   }
