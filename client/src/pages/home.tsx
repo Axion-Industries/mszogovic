@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calculator, BookOpen, HelpCircle, Settings, Clock, DoorOpen, GraduationCap, User } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Calculator, Clock, User, BookOpen, TrendingUp, Users, Calendar, ChevronRight, Bell, HelpCircle, Moon, Sun } from "lucide-react";
 import { getTimeBasedGreeting, formatDate, formatTime } from "@/lib/utils";
 
 export default function Home() {
   const [greeting, setGreeting] = useState(getTimeBasedGreeting());
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -18,6 +20,15 @@ export default function Home() {
 
     return () => clearInterval(timer);
   }, []);
+
+  const handleDarkModeToggle = (checked: boolean) => {
+    setDarkMode(checked);
+    if (checked) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-edu-bg dark:bg-gray-900">
@@ -36,6 +47,15 @@ export default function Home() {
               <div className="w-8 h-8 bg-edu-accent rounded-full flex items-center justify-center">
                 <User className="text-white w-4 h-4" />
               </div>
+              <div className="flex items-center space-x-2">
+                <Sun className="h-4 w-4 text-gray-500" />
+                <Switch
+                  id="dark-mode-toggle"
+                  checked={darkMode}
+                  onCheckedChange={handleDarkModeToggle}
+                />
+                <Moon className="h-4 w-4 text-gray-500" />
+              </div>
             </div>
           </div>
         </div>
@@ -50,7 +70,7 @@ export default function Home() {
                 {greeting}
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">Welcome to Ms. Zogovic's Math Class</p>
-              
+
               {/* Dynamic time display */}
               <div className="flex items-center justify-center space-x-2 text-edu-blue mb-8">
                 <Clock className="w-5 h-5" />
@@ -117,12 +137,6 @@ export default function Home() {
                 <div className="text-center p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer">
                   <HelpCircle className="text-edu-accent w-8 h-8 mx-auto mb-2" />
                   <p className="text-sm font-medium text-edu-text dark:text-white">Help</p>
-                </div>
-              </Link>
-              <Link href="/settings">
-                <div className="text-center p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer">
-                  <Settings className="text-gray-500 w-8 h-8 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-edu-text dark:text-white">Settings</p>
                 </div>
               </Link>
             </div>

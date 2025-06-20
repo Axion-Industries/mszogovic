@@ -16,7 +16,6 @@ import Algebra2Assignments from "@/pages/algebra2-assignments";
 import StatisticsNews from "@/pages/statistics-news";
 import StatisticsAssignments from "@/pages/statistics-assignments";
 import Help from "@/pages/help";
-import Settings from "@/pages/settings";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -35,7 +34,6 @@ function Router() {
       <Route path="/statistics-news" component={StatisticsNews} />
       <Route path="/statistics-assignments" component={StatisticsAssignments} />
       <Route path="/help" component={Help} />
-      <Route path="/settings" component={Settings} />
       <Route component={NotFound} />
     </Switch>
   );
