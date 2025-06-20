@@ -6,15 +6,11 @@ import {
   ArrowLeft, 
   Newspaper, 
   ListTodo, 
-  BookOpen, 
-  BarChart3, 
-  MessageSquare,
-  User,
-  Calendar,
-  CheckCircle
+  BookOpen,
+  User
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { formatDueDate, getTimeAgo } from "@/lib/utils";
+import { getTimeAgo } from "@/lib/utils";
 import type { NewsItem, Assignment } from "@shared/schema";
 
 export default function Class() {
@@ -38,7 +34,7 @@ export default function Class() {
               <div className="w-8 h-8 bg-edu-blue rounded-lg flex items-center justify-center">
                 <ListTodo className="text-white w-4 h-4" />
               </div>
-              <h1 className="text-xl font-semibold text-edu-text">Math Class</h1>
+              <h1 className="text-xl font-semibold text-edu-text">Ms. Zogovic</h1>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-600">{new Date().toLocaleDateString('en-US', {
@@ -158,70 +154,26 @@ export default function Class() {
                 </div>
               ) : assignments && assignments.length > 0 ? (
                 assignments.map((assignment) => {
-                  const dueDate = new Date(assignment.dueDate);
-                  const dueDateText = formatDueDate(dueDate);
-                  
-                  let dueBadgeVariant: "default" | "destructive" | "secondary" = "default";
-                  if (dueDateText === "Due Tomorrow" || dueDateText === "Due Today") {
-                    dueBadgeVariant = "destructive";
-                  } else if (dueDateText === "Overdue") {
-                    dueBadgeVariant = "destructive";
-                  } else {
-                    dueBadgeVariant = "secondary";
-                  }
-
                   return (
                     <div 
                       key={assignment.id} 
-                      className={`bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors ${
-                        assignment.isCompleted ? 'opacity-75' : ''
-                      }`}
+                      className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors"
                     >
                       <div className="flex items-start justify-between mb-2">
                         <h4 className="font-semibold text-edu-text">{assignment.title}</h4>
-                        {assignment.isCompleted ? (
-                          <Badge variant="secondary">Completed</Badge>
-                        ) : (
-                          <Badge variant={dueBadgeVariant}>{dueDateText}</Badge>
-                        )}
+                        <Badge 
+                          variant="outline" 
+                          className={`text-xs ${
+                            assignment.category === 'homework' ? 'bg-gray-100' :
+                            assignment.category === 'quiz' ? 'bg-edu-blue text-white' :
+                            assignment.category === 'project' ? 'bg-edu-green text-white' :
+                            'bg-edu-accent text-white'
+                          }`}
+                        >
+                          {assignment.category}
+                        </Badge>
                       </div>
-                      <p className="text-gray-600 text-sm mb-3">{assignment.description}</p>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2 text-xs text-gray-500">
-                          {assignment.isCompleted ? (
-                            <CheckCircle className="w-3 h-3 text-edu-green" />
-                          ) : (
-                            <Calendar className="w-3 h-3" />
-                          )}
-                          <span>
-                            {assignment.isCompleted 
-                              ? `Submitted: ${dueDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}` 
-                              : `Due: ${dueDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`
-                            }
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Badge 
-                            variant="outline" 
-                            className={`text-xs ${
-                              assignment.category === 'homework' ? 'bg-gray-100' :
-                              assignment.category === 'quiz' ? 'bg-edu-blue text-white' :
-                              assignment.category === 'project' ? 'bg-edu-green text-white' :
-                              'bg-edu-accent text-white'
-                            }`}
-                          >
-                            {assignment.category}
-                          </Badge>
-                          <span className={`text-xs font-medium ${
-                            assignment.isCompleted && assignment.grade ? 'text-edu-green' : 'text-gray-500'
-                          }`}>
-                            {assignment.isCompleted && assignment.grade 
-                              ? `${assignment.grade}/${assignment.points} pts`
-                              : `${assignment.points} pts`
-                            }
-                          </span>
-                        </div>
-                      </div>
+                      <p className="text-gray-600 text-sm">{assignment.description}</p>
                     </div>
                   );
                 })
@@ -241,48 +193,33 @@ export default function Class() {
           </Card>
         </div>
 
-        {/* Additional Class Tools */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="bg-edu-card rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+        {/* Course Materials Section */}
+        <div className="mt-8">
+          <Card className="bg-edu-card rounded-xl p-6 shadow-sm border border-gray-100">
             <CardContent className="p-0">
-              <div className="w-12 h-12 bg-edu-blue/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="text-edu-blue w-6 h-6" />
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-10 h-10 bg-edu-blue/10 rounded-lg flex items-center justify-center">
+                  <BookOpen className="text-edu-blue w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-semibold text-edu-text">Course Materials</h3>
               </div>
-              <h3 className="font-semibold text-edu-text mb-2">Course Materials</h3>
-              <p className="text-gray-600 text-sm mb-4">Access textbooks, worksheets, and supplementary resources</p>
-              <Button variant="ghost" size="sm" className="text-edu-blue hover:text-edu-blue/80">
-                Browse Materials
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-edu-card rounded-xl p-6 shadow-sm border border-gray-100 text-center">
-            <CardContent className="p-0">
-              <div className="w-12 h-12 bg-edu-green/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="text-edu-green w-6 h-6" />
-              </div>
-              <h3 className="font-semibold text-edu-text mb-2">Grade Center</h3>
-              <p className="text-gray-600 text-sm mb-4">View your grades and track your progress throughout the semester</p>
-              <Button variant="ghost" size="sm" className="text-edu-green hover:text-edu-green/80">
-                View Grades
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-edu-card rounded-xl p-6 shadow-sm border border-gray-100 text-center">
-            <CardContent className="p-0">
-              <div className="w-12 h-12 bg-edu-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <MessageSquare className="text-edu-accent w-6 h-6" />
-              </div>
-              <h3 className="font-semibold text-edu-text mb-2">Discussion Forum</h3>
-              <p className="text-gray-600 text-sm mb-4">Ask questions and participate in class discussions</p>
-              <Button variant="ghost" size="sm" className="text-edu-accent hover:text-edu-accent/80">
-                Join Discussions
-              </Button>
+              <p className="text-gray-600 mb-6">Access textbooks, worksheets, and supplementary resources for all course topics.</p>
+              <Link href="/resources">
+                <Button className="bg-edu-blue hover:bg-edu-blue/90 text-white">
+                  Browse Materials
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-edu-card border-t border-gray-100 py-6 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-600 text-sm">© 2024 Ms. Zogovic's Classroom. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }

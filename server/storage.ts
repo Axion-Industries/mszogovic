@@ -47,19 +47,19 @@ export class MemStorage implements IStorage {
       {
         title: "Midterm Exam Schedule Released",
         content: "The midterm examination schedule has been posted. Please review the dates and prepare accordingly. Study guides will be available next week.",
-        author: "Ms. Johnson",
+        author: "Ms. Zogovic",
         priority: "high"
       },
       {
         title: "New Learning Resources Added",
         content: "I've uploaded additional practice problems for Chapter 5: Quadratic Functions. These resources include step-by-step solutions and video explanations.",
-        author: "Ms. Johnson", 
+        author: "Ms. Zogovic", 
         priority: "normal"
       },
       {
         title: "Office Hours Update",
         content: "My office hours have been extended! I'm now available Monday-Thursday from 3:00-4:30 PM for extra help and questions.",
-        author: "Ms. Johnson",
+        author: "Ms. Zogovic",
         priority: "normal"
       }
     ];
