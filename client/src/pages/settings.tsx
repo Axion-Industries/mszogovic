@@ -12,6 +12,9 @@ export default function SettingsPage() {
   const [notifications, setNotifications] = useState(true);
   const [fontSize, setFontSize] = useState("medium");
   const [theme, setTheme] = useState("blue");
+  const [angleMode, setAngleMode] = useState("degrees");
+  const [decimalPlaces, setDecimalPlaces] = useState("auto");
+  const [classUpdates, setClassUpdates] = useState(true);
 
   const handleDarkModeToggle = (checked: boolean) => {
     setDarkMode(checked);
@@ -47,17 +50,17 @@ export default function SettingsPage() {
   };
 
   const handleAngleModeChange = (value: string) => {
-    // Store angle mode preference (you can extend this to persist in localStorage)
+    setAngleMode(value);
     localStorage.setItem('calculatorAngleMode', value);
   };
 
   const handleDecimalPlacesChange = (value: string) => {
-    // Store decimal places preference
+    setDecimalPlaces(value);
     localStorage.setItem('calculatorDecimalPlaces', value);
   };
 
   const handleClassUpdatesToggle = (checked: boolean) => {
-    // Handle class updates notification setting
+    setClassUpdates(checked);
     localStorage.setItem('classUpdatesEnabled', checked.toString());
   };
 
@@ -201,7 +204,10 @@ export default function SettingsPage() {
                   <p className="font-medium text-edu-text dark:text-white">Class Updates</p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Receive notifications for new announcements</p>
                 </div>
-                <Switch defaultChecked onCheckedChange={handleClassUpdatesToggle} />
+                <Switch 
+                  checked={classUpdates} 
+                  onCheckedChange={handleClassUpdatesToggle} 
+                />
               </div>
             </CardContent>
           </Card>
@@ -222,7 +228,7 @@ export default function SettingsPage() {
                   <p className="font-medium text-edu-text dark:text-white">Angle Mode</p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Default mode for trigonometric functions</p>
                 </div>
-                <Select defaultValue="degrees" onValueChange={handleAngleModeChange}>
+                <Select value={angleMode} onValueChange={handleAngleModeChange}>
                   <SelectTrigger className="w-32">
                     <SelectValue />
                   </SelectTrigger>
@@ -239,7 +245,7 @@ export default function SettingsPage() {
                   <p className="font-medium text-edu-text dark:text-white">Decimal Places</p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Number of decimal places to display</p>
                 </div>
-                <Select defaultValue="auto" onValueChange={handleDecimalPlacesChange}>
+                <Select value={decimalPlaces} onValueChange={handleDecimalPlacesChange}>
                   <SelectTrigger className="w-32">
                     <SelectValue />
                   </SelectTrigger>
@@ -271,6 +277,9 @@ export default function SettingsPage() {
                     setNotifications(true);
                     setFontSize("medium");
                     setTheme("blue");
+                    setAngleMode("degrees");
+                    setDecimalPlaces("auto");
+                    setClassUpdates(true);
                     document.documentElement.classList.remove('dark');
                     
                     // Reset font size and theme classes
