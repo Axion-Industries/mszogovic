@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Calculator, Clock, User, BookOpen, TrendingUp, Users, Calendar, ChevronRight, Bell, HelpCircle, Moon, Sun } from "lucide-react";
+import { Calculator, Clock, User, BookOpen, TrendingUp, Users, Calendar, ChevronRight, Bell, HelpCircle, Moon, Sun, DoorOpen, GraduationCap } from "lucide-react";
 import { getTimeBasedGreeting, formatDate, formatTime } from "@/lib/utils";
 
 export default function Home() {
