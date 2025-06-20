@@ -147,9 +147,11 @@ export default function Statistics() {
               )}
               
               <div className="text-center pt-4">
-                <Button variant="ghost" size="sm" className="text-edu-blue hover:text-edu-blue/80">
-                  View All News <ArrowLeft className="ml-1 w-3 h-3 rotate-180" />
-                </Button>
+                <Link href="/statistics-news">
+                  <Button variant="ghost" size="sm" className="text-edu-blue hover:text-edu-blue/80">
+                    View All News <ArrowLeft className="ml-1 w-3 h-3 rotate-180" />
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
@@ -217,9 +219,11 @@ export default function Statistics() {
               )}
               
               <div className="text-center pt-4">
-                <Button variant="ghost" size="sm" className="text-edu-blue hover:text-edu-blue/80">
-                  View All Assignments <ArrowLeft className="ml-1 w-3 h-3 rotate-180" />
-                </Button>
+                <Link href="/statistics-assignments">
+                  <Button variant="ghost" size="sm" className="text-edu-blue hover:text-edu-blue/80">
+                    View All Assignments <ArrowLeft className="ml-1 w-3 h-3 rotate-180" />
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>

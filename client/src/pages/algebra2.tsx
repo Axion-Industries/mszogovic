@@ -119,9 +119,11 @@ export default function Algebra2() {
               )}
               
               <div className="text-center pt-4">
-                <Button variant="ghost" size="sm" className="text-edu-blue hover:text-edu-blue/80">
-                  View All News <ArrowLeft className="ml-1 w-3 h-3 rotate-180" />
-                </Button>
+                <Link href="/algebra2-news">
+                  <Button variant="ghost" size="sm" className="text-edu-blue hover:text-edu-blue/80">
+                    View All News <ArrowLeft className="ml-1 w-3 h-3 rotate-180" />
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
@@ -189,9 +191,11 @@ export default function Algebra2() {
               )}
               
               <div className="text-center pt-4">
-                <Button variant="ghost" size="sm" className="text-edu-blue hover:text-edu-blue/80">
-                  View All Assignments <ArrowLeft className="ml-1 w-3 h-3 rotate-180" />
-                </Button>
+                <Link href="/algebra2-assignments">
+                  <Button variant="ghost" size="sm" className="text-edu-blue hover:text-edu-blue/80">
+                    View All Assignments <ArrowLeft className="ml-1 w-3 h-3 rotate-180" />
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>

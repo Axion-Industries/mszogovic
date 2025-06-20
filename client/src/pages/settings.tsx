@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-edu-bg dark:bg-gray-900">
+    <div className="min-h-screen bg-edu-bg dark:bg-gray-900 animate-in fade-in duration-500">
       {/* Header */}
       <header className="bg-edu-card dark:bg-gray-800 shadow-sm border-b border-gray-100 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,7 +119,7 @@ export default function SettingsPage() {
                   <p className="font-medium text-edu-text dark:text-white">Language</p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Select your preferred language</p>
                 </div>
-                <Select value={language} onValueChange={setLanguage}>
+                <Select value={language} onValueChange={handleLanguageChange}>
                   <SelectTrigger className="w-40">
                     <SelectValue />
                   </SelectTrigger>
@@ -152,7 +152,7 @@ export default function SettingsPage() {
                 </div>
                 <Switch 
                   checked={notifications} 
-                  onCheckedChange={setNotifications}
+                  onCheckedChange={handleNotificationsToggle}
                 />
               </div>
 

@@ -9,6 +9,12 @@ import Algebra2 from "@/pages/algebra2";
 import Statistics from "@/pages/statistics";
 import Calculator from "@/pages/calculator";
 import Resources from "@/pages/resources";
+import Algebra2Resources from "@/pages/algebra2-resources";
+import StatisticsResources from "@/pages/statistics-resources";
+import Algebra2News from "@/pages/algebra2-news";
+import Algebra2Assignments from "@/pages/algebra2-assignments";
+import StatisticsNews from "@/pages/statistics-news";
+import StatisticsAssignments from "@/pages/statistics-assignments";
 import Help from "@/pages/help";
 import Settings from "@/pages/settings";
 import NotFound from "@/pages/not-found";
@@ -22,8 +28,12 @@ function Router() {
       <Route path="/statistics" component={Statistics} />
       <Route path="/calculator" component={Calculator} />
       <Route path="/resources" component={Resources} />
-      <Route path="/algebra2-resources" component={Resources} />
-      <Route path="/statistics-resources" component={Resources} />
+      <Route path="/algebra2-resources" component={Algebra2Resources} />
+      <Route path="/statistics-resources" component={StatisticsResources} />
+      <Route path="/algebra2-news" component={Algebra2News} />
+      <Route path="/algebra2-assignments" component={Algebra2Assignments} />
+      <Route path="/statistics-news" component={StatisticsNews} />
+      <Route path="/statistics-assignments" component={StatisticsAssignments} />
       <Route path="/help" component={Help} />
       <Route path="/settings" component={Settings} />
       <Route component={NotFound} />

@@ -107,10 +107,10 @@ export default function Home() {
                   <p className="text-sm font-medium text-edu-text dark:text-white">Calculator</p>
                 </div>
               </Link>
-              <Link href="/algebra2-resources">
+              <Link href="/statistics-resources">
                 <div className="text-center p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer">
                   <BookOpen className="text-edu-green w-8 h-8 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-edu-text dark:text-white">Algebra 2</p>
+                  <p className="text-sm font-medium text-edu-text dark:text-white">AP Statistics</p>
                 </div>
               </Link>
               <Link href="/help">
