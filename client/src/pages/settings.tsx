@@ -22,6 +22,14 @@ export default function SettingsPage() {
     }
   };
 
+  const handleLanguageChange = (value: string) => {
+    setLanguage(value);
+  };
+
+  const handleNotificationsToggle = (checked: boolean) => {
+    setNotifications(checked);
+  };
+
   return (
     <div className="min-h-screen bg-edu-bg dark:bg-gray-900 animate-in fade-in duration-500">
       {/* Header */}
