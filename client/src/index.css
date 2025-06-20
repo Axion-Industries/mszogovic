@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 98%);
+  --foreground: hsl(210, 11%, 13%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 16%, 47%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 11%, 13%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 11%, 13%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(210, 83%, 47%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(210, 40%, 96%);
+  --secondary-foreground: hsl(222, 84%, 5%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(222, 84%, 5%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(210, 11%, 13%);
+  --radius: 0.5rem;
+
+  /* Custom education colors */
+  --edu-blue: hsl(210, 83%, 47%);
+  --edu-green: hsl(122, 39%, 49%);
+  --edu-bg: hsl(0, 0%, 98%);
+  --edu-text: hsl(210, 11%, 13%);
+  --edu-accent: hsl(36, 100%, 55%);
+  --edu-card: hsl(0, 0%, 100%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 4%, 16%);
+  --muted-foreground: hsl(240, 5%, 65%);
+  --popover: hsl(240, 10%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 4%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 4%, 16%);
+  --input: hsl(240, 4%, 16%);
+  --primary: hsl(210, 83%, 47%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(240, 4%, 16%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 4%, 16%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 5%, 84%);
+
+  /* Custom education colors for dark mode */
+  --edu-blue: hsl(210, 83%, 47%);
+  --edu-green: hsl(122, 39%, 49%);
+  --edu-bg: hsl(240, 10%, 4%);
+  --edu-text: hsl(0, 0%, 98%);
+  --edu-accent: hsl(36, 100%, 55%);
+  --edu-card: hsl(240, 10%, 4%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .bg-edu-blue {
+    background-color: var(--edu-blue);
+  }
+  
+  .bg-edu-green {
+    background-color: var(--edu-green);
+  }
+  
+  .bg-edu-bg {
+    background-color: var(--edu-bg);
+  }
+  
+  .bg-edu-card {
+    background-color: var(--edu-card);
+  }
+  
+  .text-edu-blue {
+    color: var(--edu-blue);
+  }
+  
+  .text-edu-green {
+    color: var(--edu-green);
+  }
+  
+  .text-edu-text {
+    color: var(--edu-text);
+  }
+  
+  .text-edu-accent {
+    color: var(--edu-accent);
+  }
+  
+  .border-edu-blue {
+    border-color: var(--edu-blue);
+  }
+  
+  .hover\:bg-edu-blue:hover {
+    background-color: hsl(210, 83%, 42%);
+  }
+  
+  .hover\:text-edu-blue:hover {
+    color: var(--edu-blue);
+  }
+}
