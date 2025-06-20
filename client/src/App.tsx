@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import Class from "@/pages/class";
+import Algebra2 from "@/pages/algebra2";
+import Statistics from "@/pages/statistics";
 import Calculator from "@/pages/calculator";
 import Resources from "@/pages/resources";
 import Help from "@/pages/help";
@@ -16,8 +18,12 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/class" component={Class} />
+      <Route path="/algebra2" component={Algebra2} />
+      <Route path="/statistics" component={Statistics} />
       <Route path="/calculator" component={Calculator} />
       <Route path="/resources" component={Resources} />
+      <Route path="/algebra2-resources" component={Resources} />
+      <Route path="/statistics-resources" component={Resources} />
       <Route path="/help" component={Help} />
       <Route path="/settings" component={Settings} />
       <Route component={NotFound} />

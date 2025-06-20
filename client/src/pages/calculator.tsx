@@ -115,16 +115,16 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-edu-bg">
+    <div className="min-h-screen bg-edu-bg dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-edu-card shadow-sm border-b border-gray-100">
+      <header className="bg-edu-card dark:bg-gray-800 shadow-sm border-b border-gray-100 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-edu-blue rounded-lg flex items-center justify-center">
                 <Calculator className="text-white w-4 h-4" />
               </div>
-              <h1 className="text-xl font-semibold text-edu-text">Scientific Calculator</h1>
+              <h1 className="text-xl font-semibold text-edu-text dark:text-white">Scientific Calculator</h1>
             </div>
           </div>
         </div>
@@ -140,10 +140,10 @@ export default function CalculatorPage() {
         </Link>
 
         {/* Calculator */}
-        <Card className="bg-edu-card rounded-xl shadow-lg border border-gray-100">
+        <Card className="bg-edu-card dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
           <CardContent className="p-6">
             {/* Display */}
-            <div className="bg-gray-900 text-white p-4 rounded-lg mb-4 text-right text-2xl font-mono min-h-[60px] flex items-center justify-end">
+            <div className="bg-gray-900 dark:bg-gray-700 text-white p-4 rounded-lg mb-4 text-right text-2xl font-mono min-h-[60px] flex items-center justify-end">
               {display}
             </div>
 
@@ -166,24 +166,26 @@ export default function CalculatorPage() {
               {/* Clear and Operations */}
               <Button onClick={clear} className="bg-red-500 hover:bg-red-600 text-white col-span-2">Clear</Button>
               <Button onClick={() => setDisplay(display.slice(0, -1) || "0")} className="bg-gray-500 hover:bg-gray-600 text-white">⌫</Button>
-              <Button onClick={() => performOperation("÷")} className="bg-edu-blue hover:bg-edu-blue/90 text-white">÷</Button>
-              <Button onClick={() => performOperation("×")} className="bg-edu-blue hover:bg-edu-blue/90 text-white">×</Button>
+              <Button onClick={() => performOperation("%")} className="bg-edu-blue hover:bg-edu-blue/90 text-white">%</Button>
+              <Button onClick={() => performOperation("±")} className="bg-edu-blue hover:bg-edu-blue/90 text-white">±</Button>
 
               {/* Number Pad */}
               <Button onClick={() => inputNumber("7")} className="bg-gray-200 hover:bg-gray-300 text-black">7</Button>
               <Button onClick={() => inputNumber("8")} className="bg-gray-200 hover:bg-gray-300 text-black">8</Button>
               <Button onClick={() => inputNumber("9")} className="bg-gray-200 hover:bg-gray-300 text-black">9</Button>
-              <Button onClick={() => performOperation("-")} className="bg-edu-blue hover:bg-edu-blue/90 text-white">-</Button>
-              <Button onClick={() => performOperation("+")} className="bg-edu-blue hover:bg-edu-blue/90 text-white rowspan-2">+</Button>
+              <Button onClick={() => performOperation("÷")} className="bg-edu-blue hover:bg-edu-blue/90 text-white">÷</Button>
+              <Button onClick={() => performOperation("×")} className="bg-edu-blue hover:bg-edu-blue/90 text-white">×</Button>
 
               <Button onClick={() => inputNumber("4")} className="bg-gray-200 hover:bg-gray-300 text-black">4</Button>
               <Button onClick={() => inputNumber("5")} className="bg-gray-200 hover:bg-gray-300 text-black">5</Button>
               <Button onClick={() => inputNumber("6")} className="bg-gray-200 hover:bg-gray-300 text-black">6</Button>
-              <Button onClick={() => performOperation("=")} className="bg-edu-accent hover:bg-edu-accent/90 text-white row-span-2">=</Button>
+              <Button onClick={() => performOperation("-")} className="bg-edu-blue hover:bg-edu-blue/90 text-white">-</Button>
+              <Button onClick={() => performOperation("+")} className="bg-edu-blue hover:bg-edu-blue/90 text-white row-span-2">+</Button>
 
               <Button onClick={() => inputNumber("1")} className="bg-gray-200 hover:bg-gray-300 text-black">1</Button>
               <Button onClick={() => inputNumber("2")} className="bg-gray-200 hover:bg-gray-300 text-black">2</Button>
               <Button onClick={() => inputNumber("3")} className="bg-gray-200 hover:bg-gray-300 text-black">3</Button>
+              <Button onClick={() => performOperation("=")} className="bg-edu-accent hover:bg-edu-accent/90 text-white row-span-2">=</Button>
 
               <Button onClick={() => inputNumber("0")} className="bg-gray-200 hover:bg-gray-300 text-black col-span-2">0</Button>
               <Button onClick={inputDecimal} className="bg-gray-200 hover:bg-gray-300 text-black">.</Button>

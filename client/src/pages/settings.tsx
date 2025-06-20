@@ -81,24 +81,7 @@ export default function SettingsPage() {
                 />
               </div>
 
-              {/* Theme Color */}
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium text-edu-text dark:text-white">Theme Color</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Choose your preferred accent color</p>
-                </div>
-                <Select value={theme} onValueChange={setTheme}>
-                  <SelectTrigger className="w-32">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="blue">Blue</SelectItem>
-                    <SelectItem value="green">Green</SelectItem>
-                    <SelectItem value="purple">Purple</SelectItem>
-                    <SelectItem value="orange">Orange</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+
 
               {/* Font Size */}
               <div className="flex items-center justify-between">
