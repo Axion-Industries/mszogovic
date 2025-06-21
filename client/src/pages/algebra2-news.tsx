@@ -9,15 +9,37 @@ import {
   Calendar,
   Clock
 } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
 import { getTimeAgo } from "@/lib/utils";
-import type { NewsItem } from "@shared/schema";
+
+// Use static news data for static site deployment
+const newsItems = [
+  {
+    id: 1,
+    title: "Midterm Exam Schedule Released",
+    content: "The midterm examination schedule has been posted. Please review the dates and prepare accordingly. Study guides will be available next week.",
+    author: "Ms. Zogovic",
+    priority: "high",
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 2,
+    title: "New Learning Resources Added",
+    content: "I've uploaded additional practice problems for Chapter 5: Quadratic Functions. These resources include step-by-step solutions and video explanations.",
+    author: "Ms. Zogovic",
+    priority: "normal",
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 3,
+    title: "Office Hours Update",
+    content: "My office hours have been extended! I'm now available Monday-Thursday from 3:00-4:30 PM for extra help and questions.",
+    author: "Ms. Zogovic",
+    priority: "normal",
+    createdAt: new Date().toISOString(),
+  },
+];
 
 export default function Algebra2News() {
-  const { data: newsItems, isLoading: newsLoading } = useQuery<NewsItem[]>({
-    queryKey: ['/api/news'],
-  });
-
   return (
     <div className="min-h-screen bg-edu-bg dark:bg-gray-900 animate-in fade-in duration-500">
       {/* Navigation Header */}
@@ -59,20 +81,7 @@ export default function Algebra2News() {
 
         {/* News Items */}
         <div className="space-y-6">
-          {newsLoading ? (
-            <div className="space-y-6">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Card key={i} className="bg-edu-card dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 animate-pulse">
-                  <CardContent className="p-6">
-                    <div className="h-6 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-4"></div>
-                    <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded w-full mb-2"></div>
-                    <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded w-2/3 mb-4"></div>
-                    <div className="h-3 bg-gray-200 dark:bg-gray-600 rounded w-1/3"></div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : newsItems && newsItems.length > 0 ? (
+          {newsItems && newsItems.length > 0 ? (
             newsItems.map((item, index) => {
               const borderColors = ['border-l-edu-blue', 'border-l-edu-green', 'border-l-edu-accent', 'border-l-purple-500'];
               const borderColor = borderColors[index % borderColors.length];
