@@ -2,7 +2,7 @@ services:
   frontend:
     type: static
     name: math-frontend
-    buildCommand: npm install && npm run build
+    buildCommand: npm run build
     staticPublishPath: dist/public
     envVars:
       - key: NODE_ENV
